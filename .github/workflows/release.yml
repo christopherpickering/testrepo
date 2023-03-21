@@ -1,0 +1,19 @@
+name: safari build
+on:
+  release:
+    types: [published]
+jobs:
+  deploy:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+        # set fetch depth to 0 to get full history.. used to make a build number
+        with:
+          fetch-depth: 0
+      - name: do stuff
+        run: |
+          LAST_VERSION=${{ github.event.release.tag_name }}
+          echo $LAST_VERSION
+          LAST_VERSION=${LAST_VERSION/v/}
+          echo $LAST_VERSION
+          
