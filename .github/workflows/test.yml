@@ -9,36 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    # - name: Start Meilisearch
-    #   run: |
-    #     docker run -d --rm --name meilisearch -p 7700:7700 -v $(pwd)/meili_data:/meili_data getmeili/meilisearch:v0.30
-    - name: Start Meilisearch
-      uses: moy2010/meilisearch-github-action@0.1.4
-      with:
-        meilisearch-version: v0.30.5
-
-    - name: check search
-      run: sleep 5; curl -v http://localhost:7700/health
+    - uses: christopherpickering/no-azure@1.0.0
