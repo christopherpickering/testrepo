@@ -16,18 +16,19 @@ jobs:
       fail-fast: true
     steps:
       - uses: jirutka/setup-alpine@v1
-      - name: setup pyenv
-        run: curl https://pyenv.run | bash
-      - name: setup python ${{ matrix.python-version }}
-        run: |
-          $HOME/.pyenv/bin/pyenv install ${{ matrix.python-version }}
-          $HOME/.pyenv/bin/pyenv global ${{ matrix.python-version }}
-          python --version
-      - name: setup poetry
-        run: |
-          export POETRY_HOME=/opt/poetry
-          curl -sSL https://install.python-poetry.org | python -
-      - name: 'poetry version'
-        run: /opt/poetry/bin/poetry --version
-      - name: 'python version'
-        run: /opt/poetry/bin/poetry run python --version
+      - run: ls -a
+      # - name: setup pyenv
+      #   run: curl https://pyenv.run | bash
+      # - name: setup python ${{ matrix.python-version }}
+      #   run: |
+      #     $HOME/.pyenv/bin/pyenv install ${{ matrix.python-version }}
+      #     $HOME/.pyenv/bin/pyenv global ${{ matrix.python-version }}
+      #     python --version
+      # - name: setup poetry
+      #   run: |
+      #     export POETRY_HOME=/opt/poetry
+      #     curl -sSL https://install.python-poetry.org | python -
+      # - name: 'poetry version'
+      #   run: /opt/poetry/bin/poetry --version
+      # - name: 'python version'
+      #   run: /opt/poetry/bin/poetry run python --version
