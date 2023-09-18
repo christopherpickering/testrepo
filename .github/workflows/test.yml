@@ -26,3 +26,5 @@ jobs:
           curl -sSL https://install.python-poetry.org | python${{ matrix.python-version }} -
       - name: 'poetry version'
         run: /opt/poetry/bin/poetry --version
+      - name: 'python version'
+        run: /opt/poetry/bin/poetry run python --version
