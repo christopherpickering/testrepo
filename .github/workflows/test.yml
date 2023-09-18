@@ -7,15 +7,20 @@ on:
   pull_request:
 
 jobs:
-  one:
+  test:
+    name: python ${{ matrix.python-version }} on alpine
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+      fail-fast: true
     steps:
       - uses: jirutka/setup-alpine@v1
-      - name: 'pyenv'
+      - name: setup pyenv
         run: curl https://pyenv.run | bash
-      - name: 'install python'
-        run: $HOME/.pyenv/bin/pyenv install 3.10
-      - name: 'install poetry'
+      - name: setup python ${{ matrix.python-version }}
+        run: $HOME/.pyenv/bin/pyenv install ${{ matrix.python-version }}
+      - name: setup poetry
         run: |
           export POETRY_HOME=/opt/poetry
           curl -sSL https://install.python-poetry.org | python3.10 -
