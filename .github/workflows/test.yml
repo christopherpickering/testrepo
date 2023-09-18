@@ -13,3 +13,7 @@ jobs:
       - uses: jirutka/setup-alpine@v1
       - name: 'pyenv'
         run: curl https://pyenv.run | bash
+      - name: 'install python'
+        run: pyenv install 3.10
+      - name: 'install poetry'
+        run: curl -sSL https://install.python-poetry.org | python3.10 -
