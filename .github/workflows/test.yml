@@ -14,6 +14,10 @@ jobs:
       - name: 'pyenv'
         run: curl https://pyenv.run | bash
       - name: 'install python'
-        run: pyenv install 3.10
+        run: $HOME/.pyenv/bin/pyenv install 3.10
       - name: 'install poetry'
-        run: curl -sSL https://install.python-poetry.org | python3.10 -
+        run: |
+          export POETRY_HOME=/opt/poetry
+          curl -sSL https://install.python-poetry.org | python3.10 -
+      - name: 'poetry version'
+        run: /opt/poetry/bin/poetry --version
