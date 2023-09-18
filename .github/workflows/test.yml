@@ -16,7 +16,13 @@ jobs:
       fail-fast: true
     steps:
       - uses: jirutka/setup-alpine@v1
-      - run: ls -a
+      - name: Install python version
+        uses: gabrielfalcao/pyenv-action@v11
+        with:
+          default: "${{ matrix.python-version }}"
+          command: pip install -U pip  # upgrade pip after installing python
+      - name: "py version"
+        run: python --version
       # - name: setup pyenv
       #   run: curl https://pyenv.run | bash
       # - name: setup python ${{ matrix.python-version }}
