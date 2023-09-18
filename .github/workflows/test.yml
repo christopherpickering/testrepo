@@ -20,7 +20,9 @@ jobs:
         uses: gabrielfalcao/pyenv-action@v11
         with:
           default: "${{ matrix.python-version }}"
-          command: pip install -U pip  # upgrade pip after installing python
+          command: |
+            pip install -U pip  # upgrade pip after installing python
+            pyenv global ${{ matrix.python-version }}
       - name: "py version"
         run: python --version
       # - name: setup pyenv
