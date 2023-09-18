@@ -23,6 +23,6 @@ jobs:
       - name: setup poetry
         run: |
           export POETRY_HOME=/opt/poetry
-          curl -sSL https://install.python-poetry.org | python3.10 -
+          curl -sSL https://install.python-poetry.org | python${{ matrix.python-version }} -
       - name: 'poetry version'
         run: /opt/poetry/bin/poetry --version
